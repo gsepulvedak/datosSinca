@@ -1,9 +1,7 @@
 #obtener última fecha para parámetro indicado por estación
 getLastDate <- function(param){
-  query <- paste("select Monitor, max(Fecha) as maxFecha from", param, "group by Monitor")
-  cn <- odbcDriverConnect('driver={SQL Server};server=nborchers\\sqlserver_nba;dataEstacion=Nombreeo_MMA;uid=prueba;pwd=sma2018..')
-  ultFecha <- sqlQuery(cn, query = query)
-  close(cn); rm(cn)
+  ultFecha <- # read from file called as param, grouped by monitor. 2 features: Monitor name and last date
+# It will consist in a dataframe with all monitors and corresponding last date.    
   ultFecha <- mutate(ultFecha, ultFechaFmt = as.character(format(ultFecha$maxFecha, "%y%m%d"))
   )
   ultFecha <- dplyr::left_join(Estacion, ultFecha, by = c("Nombre" = "Monitor")) %>% select(Nombre, maxFecha, ultFechaFmt)

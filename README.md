@@ -1,7 +1,7 @@
 # README #
 
 ## Repo de datos estaciones SINCA-MMA
-Es un repo privado para desarrollo al interior del equipo BI de la SMA.
+Es un repo privado para desarrollo experimental. 
 
 ### ¿Para qué es el repositorio? ###
 
@@ -12,20 +12,14 @@ Es un repo privado para desarrollo al interior del equipo BI de la SMA.
 
 ** UPDATE:** versión 2.0 disponible, con actualización diaria de datos. Tarea programada localmente en computador de GSK.
 
+** UPDATE:** versión 3.0, independiente de base de datos SMA.
+
 ### Pendiente ###
 
-* Versión 2.5: migrar base de datos y scripts de actualización a servidor (sacar de pc local de GSK y de NBA)
-* Versión 3.0: script para actualización del tipo de dato (preliminar y no validado) en registro histórico
-* Versión 3.5: scripts para visualización
-* Versión 4.0: scripts de análisis de datos
+* Versión 4.0: script para actualización del tipo de dato (preliminar y no validado) en registro histórico
+* Versión 5.0: scripts de análisis de datos
 
 ### Directrices para contribuir ###
 
-* Pruebas de concepto y efectividad del código
-* Revisión de código y optimización
-* Innovación y nuevas técnicas
-* Simpleza y eficacia
 
-### ¿Con quien debo hablar? ###
-
-* Con cualquier miembro del grupo. Para hacer cambios, coordinar y comunicar al equipo.
+* Con Gonzalo Sepúlveda. 
