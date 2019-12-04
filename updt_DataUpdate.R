@@ -1,0 +1,8 @@
+con <- file("updatelog.txt", open = "at")
+sink(con, append = TRUE)
+sink(con, type = "message", append = TRUE)
+lubridate::now()
+source("~/R_wd/DatosSinca/DataUpdate.R", echo = TRUE, max.deparse.length=10000)
+sink()
+sink(type = "message")
+close(con)
