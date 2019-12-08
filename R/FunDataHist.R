@@ -1,15 +1,25 @@
 #Crear URL para descarga de contaminantes
-makeUrlCal <- function(region, param){
+makeUrlCal <- function(region, param, from = NULL, to = NULL){
   url1 <-paste0("http://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.tsindico2.cgi?outtype=xcl&macro=./",region,"/")
-  url2 <- paste0("/Cal/",param,"//",param,".horario.horario.ic")
+  if(is.null(from) | is.null(to)){
+    url2 <- paste0("/Cal/",param,"//",param,".horario.horario.ic")
+  } else {
+    url2 <- paste0("/Cal/",param,"//",param,".horario.horario.ic&from=", from, "&to=", to)
+  }
   url <- lapply(Estacion$Carpeta, function(x) paste0(url1, x, url2))
+  return(url)
 }
 
 #Crear URL para descarga de variables meteorológicas
-makeUrlMet <- function(region, param){
+makeUrlMet <- function(region, param, from = NULL, to = NULL){
   url1 <-paste0("http://sinca.mma.gob.cl/cgi-bin/APUB-MMA/apub.tsindico2.cgi?outtype=xcl&macro=./",region,"/")
-  url2 <- ifelse(param == "WDIR", paste0("/Met/",param,"//horario_000_spec.ic"), paste0("/Met/",param,"//horario_000.ic"))
+  if(is.null(from) | is.null(to)){
+    url2 <- ifelse(param == "WDIR", paste0("/Met/",param,"//horario_000_spec.ic"), paste0("/Met/",param,"//horario_000.ic"))
+  } else {
+    url2 <- ifelse(param == "WDIR", paste0("/Met/",param,"//horario_000_spec.ic&from=", from, "&to=", to), paste0("/Met/",param,"//horario_000.ic&from=", from, "&to=", to))
+  }
   url <- lapply(Estacion$Carpeta, function(x) paste0(url1, x, url2))
+  return(url)
 }
 
 #Obtener set de datos de calidad

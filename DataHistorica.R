@@ -5,10 +5,8 @@ library(plyr)
 library(dplyr)
 library(RODBC)
 
-#Obtener diccionario estaciones de BD
-cn <- odbcDriverConnect('driver={SQL Server};server=nborchers\\sqlserver_nba;database=Monitoreo_MMA;uid=prueba;pwd=sma2018..')
-Estacion <- sqlQuery(cn, "select * from Estacion")
-close(cn)
+#Obtener diccionario estaciones de archivo
+Estacion <- read_csv("estacion.csv")
 
 source("~/R_wd/DatosSinca/R/FunDataHist.R")
 

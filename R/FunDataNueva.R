@@ -1,7 +1,6 @@
 #obtener última fecha para parámetro indicado por estación
 getLastDate <- function(param){
-  ultFecha <- # read from file called as param, grouped by monitor. 2 features: Monitor name and last date
-# It will consist in a dataframe with all monitors and corresponding last date.    
+  ultFecha <- group_by(param, Monitor) %>% summarise(maxFecha = max(Fecha))
   ultFecha <- mutate(ultFecha, ultFechaFmt = as.character(format(ultFecha$maxFecha, "%y%m%d"))
   )
   ultFecha <- dplyr::left_join(Estacion, ultFecha, by = c("Nombre" = "Monitor")) %>% select(Nombre, maxFecha, ultFechaFmt)

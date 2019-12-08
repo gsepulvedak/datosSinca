@@ -2,6 +2,7 @@ library(tidyverse)
 library(lubridate)
 library(stringr)
 
+Estacion <- read_csv("estacion.csv")
 ultFecha <- data_frame(Nombre = Estacion$Nombre, ultFechaFmt = "191101")
 updt <- dplyr::left_join(Estacion, ultFecha, by = c("Nombre" = "Nombre")) %>% select(Nombre, ultFechaFmt)
 ayer <- format(today(tzone = "America/Santiago")-1, "%y%m%d")
@@ -13,9 +14,9 @@ url <- lapply(url, str_replace_all, "NA", "")
 
 
 getCalData <- function(){
-  sets <- lapply(url[1], read.csv2, header = TRUE, 
+  sets <- lapply(url, read.csv2, header = TRUE, 
                  colClasses = c("integer", "integer",rep("numeric",3), "NULL"), dec = ",")
-  names(sets) <- "Cerrillos" # Estacion$Nombre
+  names(sets) <- Estacion$Nombre
   sets <- lapply(sets, function(x) gather(x, TipoDato, vbl, 3:5, na.rm = TRUE, factor_key = FALSE))
   sets <- lapply(sets, function(x) {if(nrow(x) == 0) x <- NULL; x})
   sets <- compact(sets)
@@ -52,3 +53,7 @@ if(length(sets) > 0){
   
   write_csv(MP25, "MP25.csv", append = TRUE)
   }
+
+rm(list = setdiff(ls(), c("Estacion", "MP25")))
+
+   
