@@ -1,27 +1,35 @@
+library(tidyverse)
 library(tidyr)
 library(purrr)
 library(lubridate)
 library(plyr)
 library(dplyr)
-library(RODBC)
+# library(RODBC) (hay que limpiear varias otras librerías además de RODBC)
 
-#Obtener diccionario estaciones de archivo
-Estacion <- read_csv("estacion.csv")
+# Obtener diccionario estaciones de archivo
+Estacion <- read_csv("Data/estacion.csv")
 
-source("~/R_wd/DatosSinca/R/FunDataHist.R")
+source("R/FunDataHist.R")
 
-#Obtener MP2,5
-url <- makeUrlCal(region = "RM", param = "PM25")
-sets <- getCalData() #Obtención de datos en una lista
-MP25 <- sets %>% Reduce(function(a,b) dplyr::union(a,b),. ); rm(sets) #Generación de dataframe
-MP25 <- cleanCalData(data = MP25, vbl = "MP25") #Limpieza y ajustes de formato
-MP25 <- select(MP25, Fecha, ConMP25, TipoDato, Ano, Mes, Dia, Hora, Region, Comuna, Monitor, Codigo) #Selección de tabla final
+# Obtener PM25
+url <- makeUrlCal(region = "RM", param = "PM25", from = "191001", to = "191031") # fechas arbitrarias para test
+sets <- getCalData() #Obtención de datos (en una lista)
 
-#Guardar registros en BD
-cn <- odbcReConnect(cn)
-sqlSave(cn, MP25, tablename = "MP25", rownames = FALSE, varTypes = c(Fecha = "datetime"))
-close(cn); rm(MP25, url)
+if(length(sets) > 0){
+  MP25 <- sets %>% Reduce(function(a,b) dplyr::union(a,b),. ); rm(sets) #Generación de dataframe
+  MP25 <- cleanCalData(data = MP25, vbl = "MP25") #Limpieza y ajustes de formato
+  MP25 <- select(MP25, Fecha, ConMP25, TipoDato, Ano, Mes, Dia, Hora, Region, Comuna, Monitor, Codigo) #Selección de tabla final
+  
+  # Guardar dataset en archivo
+  if (file.exists("Data/MP25.csv")){
+    write_csv(MP25, "Data/MP25.csv", append = TRUE)
+  } else{
+    write_csv(MP25, "Data/MP25.csv", col_names = TRUE)
+  }
+}
+# rm(MP25, url)
 
+################### DESDE AQUÍ EN ADELANTE EL CÓDIGO NO HA SIDO ACTUALIZADO AÚN #############
 #Obtener MP10
 url <- makeUrlCal(region = "RM", param = "PM10")
 sets <- getCalData() #Obtención de datos en una lista

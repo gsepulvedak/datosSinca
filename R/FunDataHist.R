@@ -31,7 +31,7 @@ getCalData <- function(){
   sets <- compact(sets)
   sets <- lapply(sets, function(x) gather(x, TipoDato, vbl, 3:5, na.rm = TRUE, factor_key = FALSE))
   sets <- lapply(sets, function(x) {if(nrow(x) == 0) x <- NULL; x})
-  sets <- compact(sets)
+  sets <- purrr::compact(sets)
   sets <- lapply(sets, function(x) mutate(x, Fechatmp = paste0(sprintf("%06.0f", x$FECHA..YYMMDD.), sprintf("%04.0f", x$HORA..HHMM.))))
   sets <- lapply(sets, function(x) mutate(x, Fecha = ymd_hm(x$Fechatmp, tz = "America/Santiago")))
   sets <- lapply(sets, function(x) mutate(x, Ano = year(x$Fecha), Mes = month(x$Fecha), Dia = day(x$Fecha), Hora = hour(x$Fecha)))
@@ -50,7 +50,7 @@ getMetData <- function(){
   names(sets) <- Estacion$Nombre
   sets <- lapply(sets, function(x) x[!is.na(x$vbl),])
   sets <- lapply(sets, function(x) {if(nrow(x) == 0) x <- NULL; x})
-  sets <- compact(sets)
+  sets <- purrr::compact(sets)
   sets <- lapply(sets, function(x) mutate(x, Fechatmp = paste0(sprintf("%06.0f", x$FechaOrig), sprintf("%04.0f", x$Hora))))
   sets <- lapply(sets, function(x) mutate(x, Fecha = ymd_hm(x$Fechatmp, tz = "America/Santiago")))
   sets <- lapply(sets, function(x) mutate(x, Ano = year(x$Fecha), Mes = month(x$Fecha), Dia = day(x$Fecha), Hora = hour(x$Fecha)))

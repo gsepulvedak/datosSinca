@@ -1,0 +1,14 @@
+EstacionID,Nombre,Comuna,Region,Latitud,Longitud,Carpeta,Codigo
+1,Cerrillos,Cerrillos,RM,-33.495854,-70.7049312,D31,P
+2,CerrillosI,Cerrillos,RM,-33.493492,-70.7193794,D16,P
+3,CerroNavia,Cerro Navia,RM,-33.4332833,-70.7315981,D18,R
+4,ElBosque,El Bosque,RM,-33.547266,-70.6662227,D17,Q
+5,Independencia,Independencia,RM,-33.4226722,-70.6515053,D11,F
+6,LaFlorida,La Florida,RM,-33.5170111,-70.5885813,D12,L
+7,LasCondes,Las Condes,RM,-33.3766046,-70.5235716,D13,M
+8,Pudahuel,Pudahuel,RM,-33.437405,-70.7502748,D15,O
+9,PuenteAlto,Puente Alto,RM,-33.5911491,-70.5974692,D27,S
+10,Quilicura,Quilicura,RM,-33.3508712,-70.7261607,D30,V
+11,QuilicuraI,Quilicura,RM,-33.3657846,-70.7523924,D29,V
+12,ParqueOHiggins,Parque O´Higgins,RM,-33.4626751,-70.66412,D14,N
+13,Talagante,Talagante,RM,-33.6738193,-70.9526817,D28,T
