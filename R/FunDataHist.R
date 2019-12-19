@@ -80,3 +80,15 @@ cleanMetData <- function(data, var){
   colnames(data)[3] <- var
   return(data)
 }
+
+# Save dataset into file
+save_data <- function(dataset){
+  f_path <- paste0("Data/", deparse(substitute(dataset)), ".csv") #Get name of dataset object
+  if (file.exists(f_path)){
+    write_csv(MP25, f_path, append = TRUE)
+  } else{
+    write_csv(MP25, f_path, col_names = TRUE)
+  }
+}
+
+

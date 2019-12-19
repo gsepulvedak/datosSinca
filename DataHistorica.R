@@ -1,9 +1,9 @@
 library(tidyverse)
-library(tidyr)
-library(purrr)
+#library(tidyr)
+#library(purrr)
 library(lubridate)
 library(plyr)
-library(dplyr)
+#library(dplyr)
 # library(RODBC) (hay que limpiear varias otras librerías además de RODBC)
 
 # Obtener diccionario estaciones de archivo
@@ -12,7 +12,7 @@ Estacion <- read_csv("Data/estacion.csv")
 source("R/FunDataHist.R")
 
 # Obtener PM25
-url <- makeUrlCal(region = "RM", param = "PM25", from = "191001", to = "191031") # fechas arbitrarias para test
+url <- makeUrlCal(region = "RM", param = "PM25", from = "191101", to = "191130") # fechas arbitrarias para test
 sets <- getCalData() #Obtención de datos (en una lista)
 
 if(length(sets) > 0){
@@ -21,13 +21,9 @@ if(length(sets) > 0){
   MP25 <- select(MP25, Fecha, ConMP25, TipoDato, Ano, Mes, Dia, Hora, Region, Comuna, Monitor, Codigo) #Selección de tabla final
   
   # Guardar dataset en archivo
-  if (file.exists("Data/MP25.csv")){
-    write_csv(MP25, "Data/MP25.csv", append = TRUE)
-  } else{
-    write_csv(MP25, "Data/MP25.csv", col_names = TRUE)
-  }
+  save_data(MP25)
+  rm(MP25, url)
 }
-# rm(MP25, url)
 
 ################### DESDE AQUÍ EN ADELANTE EL CÓDIGO NO HA SIDO ACTUALIZADO AÚN #############
 #Obtener MP10
