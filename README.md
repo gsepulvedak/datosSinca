@@ -1,25 +1,20 @@
 # README #
 
-## Repo de datos estaciones SINCA-MMA
-Es un repo privado para desarrollo experimental. 
+Experimentation and testing with air pollutants data.
+Repo originally in Spanish language. Only readme file has been translated.
+This is a work in progress (paused at the moment).
 
-### ¿Para qué es el repositorio? ###
+## Repo objectives
 
-* Resumen: el repositorio contiene el código R para obtener los datos de las estaciones SINCA del MMA y guardar los datos extraídos en una base de datos local (por ahora, en el computador de NBA)
-* Version: 2.0
+* Scrape and wrangle data from the official Chilean government air quality monitoring-system.
+* Experimenting with gathered data, pattern discovery, epxloration.
 
-**Nota:** la versión 1.0 solo tiene instrucciones para extraer la totalidad de datos disponibles. El proceso demora aproximadamente 7 horas.
+## Methodological notes
 
-** UPDATE:** versión 2.0 disponible, con actualización diaria de datos. Tarea programada localmente en computador de GSK.
+* Data was originally stored in a relational data base. Now it needs to be stored in a file. Code updating is not finished. Today this repo is sort of a old/new code mixture.
+* Acquiring the whole historic data may take several hours to complete.
 
-** UPDATE:** versión 3.0, independiente de base de datos SMA.
+## Some ideas to do next ##
 
-### Pendiente ###
-
-* Versión 4.0: script para actualización del tipo de dato (preliminar y no validado) en registro histórico
-* Versión 5.0: scripts de análisis de datos
-
-### Directrices para contribuir ###
-
-
-* Con Gonzalo Sepúlveda. 
+* Update code to perform datum category update (preliminar and not validated) for historic data.
+* Create visualisations for basic analysis.
