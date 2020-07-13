@@ -7,7 +7,7 @@ This is a work in progress (paused at the moment).
 ## Repo objectives
 
 * Scrape and wrangle data from the official Chilean government air quality monitoring-system.
-* Experiment with gathered data (pattern discovery, epxloration).
+* Experiment with gathered data (pattern discovery, exploration).
 
 ## Methodological notes
 
