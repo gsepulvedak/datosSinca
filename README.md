@@ -4,7 +4,7 @@ Experimentation and testing with air pollutants data.
 Repo originally in Spanish language. Only readme file has been translated.
 This is a work in progress (paused at the moment).
 
-## Repo objectives
+## Objectives
 
 * Scrape and wrangle data from the official Chilean government air quality monitoring-system.
 * Experiment with gathered data (pattern discovery, exploration).
